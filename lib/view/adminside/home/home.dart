@@ -30,7 +30,7 @@ class ScreenAdminHome extends StatelessWidget {
                 Expanded(
                   child: ListView.builder( padding: const EdgeInsets.only(top: 20), itemBuilder: (context, index) {
                     return Card(color: Colors.brown[300],
-                      child: const ListTile(leading: CircleAvatar(radius: 30,backgroundImage: AssetImage('asset/download (1).jpeg'),),title: Text('Name'),subtitle: Column(
+                      child: const ListTile(leading: CircleAvatar(radius: 30,backgroundImage: AssetImage('asset/user.jpeg'),),title: Text('Name'),subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('TotalWorks',style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),Text('2567',style: TextStyle(fontSize: 15,color: Colors.black),)

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:service_manager/core/sizing.dart';
+import 'package:service_manager/view/callstatusupdation/call_status_updation.dart';
+
+import '../../core/colors.dart';
 
 class ScreenCallDetailView extends StatelessWidget {
   const ScreenCallDetailView({super.key});
@@ -9,13 +12,17 @@ class ScreenCallDetailView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(top: 30,left: 15),
           child: Column(
             children: [
-              const Text(
+              Align(alignment: Alignment.topLeft, child: InkWell(onTap: () {
+                Navigator.pop(context);
+              }, child: Container(width: 40,height: 40,color: clrDarkBlue,child: Icon(Icons.arrow_back,color: Colors.white,size: 30,),))),
+               const Text(
                 'Call Details',
                 style: TextStyle(fontSize: 25),
               ),
+           
               TextWIdget(text1: 'Coustomer:', text2: 'Sahil Saleem'),
               TextWIdget(
                   text1: 'Product Category:',
@@ -65,12 +72,17 @@ class ScreenCallDetailView extends StatelessWidget {
                   fontSize: 17,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               ElevatedButton(
-                onPressed: () {},
-                child: const Text('Edit Call Details'),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenCallStatusUpdation(),));
+                },
+                child: const Text('Edit Call Details'),style: ElevatedButton.styleFrom(
+                            backgroundColor: clrDarkBlue,
+                           
+                          ),
               )
             ],
           ),

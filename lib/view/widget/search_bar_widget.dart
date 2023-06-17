@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:service_manager/core/colors.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({
@@ -11,10 +12,10 @@ class SearchBarWidget extends StatelessWidget {
       child: Container(
         width: 390,
         height: 55,
-        decoration: BoxDecoration(color: const Color.fromRGBO(115, 150, 188,100), borderRadius:BorderRadius.circular(15)),
+        decoration: BoxDecoration(color:Colors.white, borderRadius:BorderRadius.circular(15),border: Border.all(width: 2,color: clrDarkBlue)),
         child:     const TextField(
           style: TextStyle(
-              color: Color.fromARGB(204, 255, 255, 255),
+             
               fontSize: 18),
         
           textAlign: TextAlign.left,
@@ -22,9 +23,10 @@ class SearchBarWidget extends StatelessWidget {
              
           decoration: InputDecoration(
             hintText: 'What do you want to listen to?',
+          
             
               
-            hintStyle: TextStyle(color:Colors.black54),
+            hintStyle: TextStyle(color:Colors.black45),
             filled: true,
             
             border: OutlineInputBorder(

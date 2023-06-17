@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:service_manager/view/adminside/addproduct/add_product.dart';
+import 'package:service_manager/view/adminside/home/home.dart';
+import 'package:service_manager/view/home/home.dart';
 import 'view/Login/Login.dart';
 
 
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.black
       ),
-      home:const ScreenLogin(),
+      home:const ScreenHome(),
       
     );
   }

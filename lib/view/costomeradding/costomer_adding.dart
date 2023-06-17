@@ -25,16 +25,16 @@ class ScreenCustomerAdding extends StatelessWidget {
                 child: Container(width: 50,height: 60,decoration: BoxDecoration(color: Colors.amber, borderRadius:BorderRadius.circular(15) ),),
               ),
               kWidth10,
-               CustomerAddingTextFormFieldWidget(height: 60,width: 320,paddingtop: 0,text:'Fist Name',fontsize: 20),
+               TopTextTextFormFieldWidget(height: 60,width: 320,paddingtop: 0,text:'Fist Name',fontsize: 20),
                
             ],),
            
-            CustomerAddingTextFormFieldWidget(height: 60,width: 370,text: 'Last Name',fontsize:17),
-             CustomerAddingTextFormFieldWidget(height: 50,width: 370,text: 'Phone'),
-              CustomerAddingTextFormFieldWidget(height: 50,width: 370,text: 'Phone 1'),
-                CustomerAddingTextFormFieldWidget(height: 50,width: 370,text: 'Place'),
-               CustomerAddingTextFormFieldWidget(height: 200,width: 370,text: 'Address :',maxLines: 7,condition: true),
-                CustomerAddingTextFormFieldWidget(height: 200,width: 370,text: 'Billing Address :',maxLines: 7,condition: true,),
+            TopTextTextFormFieldWidget(height: 60,width: 370,text: 'Last Name',fontsize:17),
+             TopTextTextFormFieldWidget(height: 50,width: 370,text: 'Phone'),
+              TopTextTextFormFieldWidget(height: 50,width: 370,text: 'Phone 1'),
+                TopTextTextFormFieldWidget(height: 50,width: 370,text: 'Place'),
+               TopTextTextFormFieldWidget(height: 200,width: 370,text: 'Address :',maxLines: 7,condition: true),
+                TopTextTextFormFieldWidget(height: 200,width: 370,text: 'Billing Address :',maxLines: 7,condition: true,),
                 
                 Padding(
                   padding: const EdgeInsets.only(top: 30,bottom: 30),

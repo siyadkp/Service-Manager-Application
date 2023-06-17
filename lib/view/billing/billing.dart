@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:service_manager/view/billing/addbillproduct/add_bill_product.dart';
+import '../../core/colors.dart';
 import '../../core/sizing.dart';
 import '../costomeradding/widget/textformfiewld.dart';
-import '../customerview.dart/widget/customer_view_singlewidget.dart';
+
 
 class ScreenBilling extends StatelessWidget {
   const ScreenBilling({super.key});
@@ -11,21 +12,30 @@ class ScreenBilling extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 10),
         child: Column(children: [
-          kHeight20,
-           CustomerAddingTextFormFieldWidget(height: 50,width: 370,text: 'Customer',fontsize: 20),
-            CustomerAddingTextFormFieldWidget(height: 50,width: 370,text: 'Phone    '),
-                 CustomerAddingTextFormFieldWidget(height: 200,width: 370,text: 'Billing Address :',maxLines: 7,condition: true),
+          Padding(
+            padding: const EdgeInsets.only(right:350),
+            child: InkWell( onTap: () {
+                        Navigator.pop(context);
+                      }, child: Container(width: 40,height: 40,color: clrDarkBlue,child: const Icon(Icons.arrow_back,color: Colors.white,size: 30,),)),
+          ),
+          
+           TopTextTextFormFieldWidget(height: 50,width: 370,text: 'Customer',fontsize: 20),
+            TopTextTextFormFieldWidget(height: 50,width: 370,text: 'Phone    '),
+                 TopTextTextFormFieldWidget(height: 200,width: 370,text: 'Billing Address :',maxLines: 7,condition: true),
           Padding(
                 padding: const EdgeInsets.only(left: 5,right: 10,top: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Add Product',style: TextStyle(fontSize: 23,fontWeight: FontWeight.w500),),
-                        Icon(Icons.add,size: 35,color: Colors.grey,)
+                        Text('Add Items',style: TextStyle(fontSize: 23,fontWeight: FontWeight.w500),),
+                        InkWell(onTap:(){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenAddBillProduct(),));
+                        } ,child: Icon(Icons.add,size: 35,color: Colors.grey,))
                       ],
                     ),
                     const Divider(color: Colors.grey,thickness: 3),
@@ -51,10 +61,14 @@ class ScreenBilling extends StatelessWidget {
                      padding: EdgeInsets.only(top: 25,bottom: 20,right: 140),
                      child: Text('Total Amount : 3679',style:TextStyle(fontSize: 25,fontWeight: FontWeight.w500),),
                    ),
+                   
               
                 ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Edit Call Details'),
+                  onPressed: () {},style: ElevatedButton.styleFrom(
+            backgroundColor: clrDarkBlue,
+           
+          ),
+                  child: const Text('Create Bill'),
                 ),
                 kHeight20
         ]),

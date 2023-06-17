@@ -10,7 +10,7 @@ class ServicallViewSingleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromRGBO(202, 226, 232, 100),
+      color: Color.fromRGBO(202, 226, 232, 100),
       child: Container(
         height: 60,
         width: double.infinity,

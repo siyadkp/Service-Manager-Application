@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:service_manager/core/colors.dart';
 
-class CustomerAddingTextFormFieldWidget extends StatelessWidget {
-   CustomerAddingTextFormFieldWidget({
-    super.key,required this.width,required this.height,required this.text,this.maxLines=1,this.paddingtop=25,this.fontsize=15,this.condition=false
+class TopTextTextFormFieldWidget extends StatelessWidget {
+   TopTextTextFormFieldWidget({
+    super.key,required this.width,required this.height,required this.text,this.maxLines=1,this.paddingtop=25,this.fontsize=15,this.condition=false,this.hintText=''
   });
   double width;
   double height;
@@ -10,6 +11,7 @@ class CustomerAddingTextFormFieldWidget extends StatelessWidget {
   double fontsize;
   int maxLines;
   String text;
+  String hintText;
   bool condition;
  
 
@@ -27,19 +29,19 @@ class CustomerAddingTextFormFieldWidget extends StatelessWidget {
           Container(
               width: width,
               height: height,
-              decoration: BoxDecoration(color: Colors.grey, borderRadius:BorderRadius.circular(15)),
+              decoration: BoxDecoration(color: clrGrey, borderRadius:BorderRadius.circular(15)),
               child:  condition   ? const TextField(
                 
                 maxLines: 7,
                 style: TextStyle(
-                  color: Color.fromARGB(204, 255, 255, 255),
+                  color: clrGrey,
                   fontSize: 18),
               
                 textAlign: TextAlign.left,
                 
                  
                 decoration: InputDecoration(
-                hintText: 'What do you want to listen to?',
+                hintText: '',
                 
                   
                 hintStyle: TextStyle(color:Colors.black54),
@@ -64,7 +66,7 @@ class CustomerAddingTextFormFieldWidget extends StatelessWidget {
                 
                  
                 decoration: InputDecoration(
-                hintText: 'What do you want to listen to?',
+                hintText: '',
                 
                   
                 hintStyle: TextStyle(color:Colors.black54),
