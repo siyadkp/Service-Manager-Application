@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:service_manager/view/home/home.dart';
+import 'package:provider/provider.dart';
+import 'package:service_manager/controller/provider/register/register_page_provider.dart';
 
 import '../../core/colors.dart';
 
 class ScreenRegisterAccount extends StatelessWidget {
-  const ScreenRegisterAccount({super.key});
-
+  
+ScreenRegisterAccount({super.key});
+TextEditingController email = TextEditingController();
+    TextEditingController password = TextEditingController();
+    TextEditingController confirmpassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -39,19 +44,33 @@ class ScreenRegisterAccount extends StatelessWidget {
                     ),
                     elevation: 3,
                     child: TextFormField(
-                      textAlign: TextAlign.start,
-                      decoration: const InputDecoration(
-                        hintTextDirection: TextDirection.ltr,
-                        hintText: 'Email',
-                        enabledBorder:
-                            OutlineInputBorder(borderSide: BorderSide.none),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10, bottom: 2),
-                      ),
-                    ),
+                        controller: email,
+                        textAlign: TextAlign.start,
+                        decoration: const InputDecoration(
+                          hintTextDirection: TextDirection.ltr,
+                          hintText: 'Email',
+                          enabledBorder:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(left: 10, bottom: 2),
+                        ),
+                        onChanged: (value) => Provider.of<RegisterNotifier>(
+                                context,
+                                listen: false)
+                            .emailvalidation(value)),
                   ),
                 ),
               ),
+              Consumer<RegisterNotifier>(
+                  builder: (context, registerNotifier, child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Text(
+                    registerNotifier.emailerror,
+                    style: TextStyle(color: Colors.red, fontSize: 11),
+                  ),
+                );
+              }),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
                 child: SizedBox(
@@ -62,19 +81,33 @@ class ScreenRegisterAccount extends StatelessWidget {
                     ),
                     elevation: 3,
                     child: TextFormField(
-                      textAlign: TextAlign.start,
-                      decoration: const InputDecoration(
-                        hintTextDirection: TextDirection.ltr,
-                        hintText: 'Password',
-                        enabledBorder:
-                            OutlineInputBorder(borderSide: BorderSide.none),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10, bottom: 2),
-                      ),
-                    ),
+                        controller: password,
+                        textAlign: TextAlign.start,
+                        decoration: const InputDecoration(
+                          hintTextDirection: TextDirection.ltr,
+                          hintText: 'Password',
+                          enabledBorder:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(left: 10, bottom: 2),
+                        ),
+                        onChanged: (value) => Provider.of<RegisterNotifier>(
+                                context,
+                                listen: false)
+                            .passwordvalidation(value)),
                   ),
                 ),
               ),
+              Consumer<RegisterNotifier>(
+                  builder: (context, registerNotifier, child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Text(
+                    registerNotifier.passworderror,
+                    style: TextStyle(color: Colors.red, fontSize: 11),
+                  ),
+                );
+              }),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
                 child: SizedBox(
@@ -89,22 +122,46 @@ class ScreenRegisterAccount extends StatelessWidget {
                     ),
                     elevation: 3,
                     child: TextFormField(
-                      textAlign: TextAlign.start,
-                      decoration: const InputDecoration(
-                        hintTextDirection: TextDirection.ltr,
-                        hintText: 'Confirm Password',
-                        enabledBorder:
-                            OutlineInputBorder(borderSide: BorderSide.none),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10, bottom: 2),
-                      ),
-                    ),
+                        controller: confirmpassword,
+                        textAlign: TextAlign.start,
+                        decoration: const InputDecoration(
+                          hintTextDirection: TextDirection.ltr,
+                          hintText: 'Confirm Password',
+                          enabledBorder:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(left: 10, bottom: 2),
+                        ),
+                        onChanged: (value) => Provider.of<RegisterNotifier>(
+                                context,
+                                listen: false)
+                            .confirmpasswordvalidation(value)),
                   ),
                 ),
               ),
+              Consumer<RegisterNotifier>(
+                  builder: (context, registerNotifier, child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Text(
+                    registerNotifier.confirmpassworderror,
+                    style: TextStyle(color: Colors.red, fontSize: 11),
+                  ),
+                );
+              }),
               const SizedBox(
                 height: 30,
               ),
+              Consumer<RegisterNotifier>(
+                  builder: (context, registerNotifier, child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Text(
+                    registerNotifier.signinerrors,
+                    style: TextStyle(color: Colors.red, fontSize: 11),
+                  ),
+                );
+              }),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 160),
                 child: ElevatedButton(
@@ -112,11 +169,31 @@ class ScreenRegisterAccount extends StatelessWidget {
                       backgroundColor: clrDarkBlue, // Background color
                     ),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ScreenHome(),
-                          ));
+                      bool condition1 = false;
+                      bool condition2 = false;
+                      bool condition3 = false;
+                      condition1 =
+                          Provider.of<RegisterNotifier>(context, listen: false)
+                              .emailvalidation(email.text);
+                      condition2 =
+                          Provider.of<RegisterNotifier>(context, listen: false)
+                              .passwordvalidation(password.text);
+                      if (condition2) {
+                        condition3 = Provider.of<RegisterNotifier>(context,
+                                listen: false)
+                            .confirmpasswordvalidation(
+                                confirmpassword.text,);
+                      }
+                      if (condition1 && condition2 && condition3) {
+                        Provider.of<RegisterNotifier>(context, listen: false)
+                            .signup(email.text, password.text, context);
+                      }
+          
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => const ScreenHome(),
+                      //     ));
                     },
                     child: const Text('Sign Up')),
               ),

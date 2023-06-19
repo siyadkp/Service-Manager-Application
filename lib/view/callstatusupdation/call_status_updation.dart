@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:service_manager/core/sizing.dart';
 import 'package:service_manager/view/calldetailsview/call_details_view.dart';
 import 'package:service_manager/view/costomeradding/widget/textformfield_rightside_text.dart';
 import 'package:service_manager/view/service_calls%20/service_call.dart';
